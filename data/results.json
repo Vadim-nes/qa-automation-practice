@@ -1,0 +1,62 @@
+[
+  {
+    "name": "test_login_valid",
+    "status": "passed",
+    "duration": 1.2,
+    "module": "login"
+  },
+  {
+    "name": "max",
+    "status": "passed",
+    "duration": 6.0,
+    "module": "login"
+  },
+  {
+    "name": "test_login_valid123",
+    "status": "failed",
+    "duration": 1.3,
+    "module": "login"
+  },
+  {
+    "name": "test_login_valid",
+    "status": "passed",
+    "duration": 2.2,
+    "module": "login"
+  },
+  {
+    "name": "test_login_valid",
+    "status": "passed",
+    "duration": 3.2,
+    "module": "login"
+  },
+  {
+    "name": "test_login_valid",
+    "status": "skipped",
+    "duration": 4.2,
+    "module": "login"
+  },
+  {
+    "name": "vad",
+    "status": "skipped",
+    "duration": 0.001,
+    "module": "login"
+  },
+  {
+    "name": "vad",
+    "status": "cool",
+    "duration": 0.01,
+    "module": "login"
+  },
+  {
+    "name": "vad",
+    "status": "cool",
+    "duration": 0.0041,
+    "module": "login"
+  },
+  {
+    "name": "vad",
+    "status": "cool",
+    "duration": 5.001,
+    "module": "login"
+  }
+]
