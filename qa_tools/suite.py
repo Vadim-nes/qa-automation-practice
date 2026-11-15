@@ -48,7 +48,7 @@ class TestSuite:
 
 
     def slowest(self):
-        """Возвращает самый долгий тест или None, если подходящих нет."""
+        """ Этот метод Возвращает самый долгий тест или None, если подходящих нет."""
         valid = [i for i in self.result if isinstance(i.duration, (int, float))]
         if not valid:
             return None
