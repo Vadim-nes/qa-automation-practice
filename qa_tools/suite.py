@@ -59,3 +59,4 @@ if __name__ == "__main__":
         suite.read_json()
         print(suite.count_passed())
         print(suite.slowest())
+        print("added for a test123")
