@@ -10,7 +10,7 @@ class TestResult:
     def __str__(self):
         return f"{self.name}: {self.status} ({self.duration} s)"
     def __repr__(self):
-        return f"name = {self.name}, status = {self.status}, duration = {self.duration} s)"
+        return f"name = {self.name}, status = {self.status}, duration = {self.duration} s"
 
     def is_slow(self, limit=2.0):
         return self.duration > limit
