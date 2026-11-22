@@ -52,17 +52,18 @@ class TestSuite:
         valid = [i for i in self.result if isinstance(i.duration, (int, float))]
         if not valid:
             return None
-        return max(valid, key = lambda r: r.duration).duration
+        return max(valid, key = lambda r: r.duration)
 
     def failed(self):
         """Возвращает список тестов со статусом failed."""
         return sum(1 for result in self.result if result.status == "failed")
 
+    @property
     def summary (self):
         dict_common = {}
 
         if not self.result:
-            dict_common["total"] = 0.0
+            dict_common["total"] = 0
             dict_common["pass_rate"] = 0.0
             dict_common["slowest"] = None
             dict_common["passed"] = 0
@@ -74,17 +75,16 @@ class TestSuite:
             dict_common["passed"] = self.count_passed()
             dict_common["failed"] = self.failed()
             dict_common["pass_rate"] =  round(dict_common.get("passed") / dict_common.get("total") * 100,1)
-            dict_common["slowest"] = self.slowest()
+            dict_common["slowest"] = self.slowest().name
             return dict_common
 
     def save_report(self,path):
-        payload = self.summary()
-
-        with open (path, "w", encoding = "utf-8") as f:
-            try:
+        payload = self.summary
+        try:
+            with open (path, "w", encoding = "utf-8") as f:
                 json.dump(payload, f, indent = 2, ensure_ascii= False)
-            except OSError as ex:
-                print(f"Ошибка записи файла {ex}")
+        except OSError as ex:
+            print(f"Ошибка записи файла {ex}")
 
 
 if __name__ == "__main__":
@@ -92,12 +92,12 @@ if __name__ == "__main__":
         suite.add(TestResult("t1", "passed", 1.0))
         suite.add(TestResult("t2", "failed", 2.0))
 
-        assert suite.summary()  == {'total': 2, 'passed': 1, 'failed': 1, 'pass_rate': 50, 'slowest': 2.0}
+        assert suite.summary == {'total': 2, 'passed': 1, 'failed': 1, 'pass_rate': 50, 'slowest': 2.0}
 
         suite2 = TestSuite()
-        suite2.summary()
-        assert suite2.summary() == {'total': 0, 'passed': 0, 'failed': 0, 'pass_rate': 0.0, 'slowest': None}
+        suite2.summary
+        assert suite2.summary == {'total': 0, 'passed': 0, 'failed': 0, 'pass_rate': 0.0, 'slowest': None}
 
-        print(suite.summary())
-        print(suite2.summary())
+        print(suite.summary)
+        print(suite2.summary)
 
